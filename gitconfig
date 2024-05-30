@@ -1,0 +1,36 @@
+# This is Git's per-user configuration file.
+[user]
+	name = cc_du
+	email = cc_du@outlook.com
+[gui]
+	encoding = utf-8
+[i18n] 
+	commitEncoding = utf-8 
+	logoutputencoding = utf-8 
+[core] 
+	safecrlf = true 
+	autocrlf = false
+
+[alias]
+	# source: https://readhacker.news/c/62mTJ
+	lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all -n 15
+	
+	# source: http://web.mit.edu/6.031/www/sp21/getting-started/#git-lol
+	lol = log --graph --oneline --decorate --color --all
+[credential]
+	helper = store
+[pull]
+	ff = only
+[diff]
+	tool = difftastic
+	algorithm = histogram
+[branch]
+	sort = -committerdate
+[merge]
+	conflictstyle = zdiff3
+[commit]
+	verbose = true
+[log]
+	date = iso
+[fetch]
+	prune = true
