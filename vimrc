@@ -1,4 +1,6 @@
 " source: https://missing.csail.mit.edu/2020/editors/
+
+
 " Comments in Vimscript start with a `"`.
 
 " If you open this file in Vim, it'll be syntax highlighted for you.
@@ -79,3 +81,12 @@ inoremap <Left>  <ESC>:echoe "Use h"<CR>
 inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
+
+
+
+" https://stackoverflow.com/questions/8757395/can-vim-use-the-system-clipboards-by-default
+set clipboard=unnamedplus
+
+" Plugins
+Plug 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
