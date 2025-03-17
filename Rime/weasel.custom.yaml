@@ -1,0 +1,18 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.16.0
+  generator: "Weasel::UIStyleSettings"
+  modified_time: "Mon Jun  3 18:00:38 2024"
+  rime_version: 1.11.2
+patch:
+  style/horizontal: false
+  style/inline_preedit: false
+  style/color_scheme: google
+  style/color_scheme_dark: steam
+  style/show_paging: true
+  app_options:
+    Obsidian.exe:
+      ascii_mode: true
+      vim_mode: true
+    Listary.exe:
+      ascii_mode: true
