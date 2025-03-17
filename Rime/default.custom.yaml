@@ -1,18 +1,32 @@
 customization:
   distribution_code_name: Weasel
-  distribution_version: 0.14.3
+  distribution_version: 0.16.0
   generator: "Rime::SwitcherSettings"
-  modified_time: "Fri May  5 16:49:09 2023"
-  rime_version: 1.5.3
+  modified_time: "Mon Jun  3 18:00:16 2024"
+  rime_version: 1.11.2
+
 patch:
   schema_list:
     - {schema: rime_ice}
-  key_binder/+:
-    select_first_character: "bracketleft" # 即 [
-    select_last_character: "bracketright" # 即 ]
+
+
+  save_options:
+    - ascii_punct
+    - traditionalization
+    - emoji
+    - full_shape
+    - single_char
+
+  key_binder/bindings/+:
+  # Respect vim
+  - {accept: "Control+p", send: Up, when: composing}
+  - {accept: "Control+n", send: Down, when: composing}
+  - { when: paging, accept: comma, send: Page_Up }
+  - { when: has_menu, accept: period, send: Page_Down }
   switcher:
     caption: 「方案选单」
-    hotkeys:
+    hotkeys: # delete ctrl+` and F4 hotkey.
+
   ascii_composer:
     good_old_caps_lock: false  # true | false
     switch_key:
