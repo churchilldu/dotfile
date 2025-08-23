@@ -9,7 +9,6 @@ patch:
   schema_list:
     - {schema: rime_ice}
 
-
   save_options:
     - ascii_punct
     - traditionalization
@@ -21,8 +20,10 @@ patch:
   # Respect vim
   - {accept: "Control+p", send: Up, when: composing}
   - {accept: "Control+n", send: Down, when: composing}
-  - { when: paging, accept: comma, send: Page_Up }
-  - { when: has_menu, accept: period, send: Page_Down }
+  - {accept: Return, send: space, when: has_menu}
+  - {accept: comma, send: Page_Up, when: has_menu}
+  - {accept: period, send: Page_Down, when: has_menu}
+
   switcher:
     caption: 「方案选单」
     hotkeys: # delete ctrl+` and F4 hotkey.

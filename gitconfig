@@ -1,4 +1,6 @@
 # This is Git's per-user configuration file.
+[init]
+  defaultBranch = main
 [user]
 	name = cc_du
 	email = cc_du@outlook.com
@@ -8,14 +10,25 @@
 	commitEncoding = utf-8 
 	logoutputencoding = utf-8 
 [core] 
-	safecrlf = true 
 	autocrlf = true
+	pager = diff-so-fancy | less --tabs=4 -RF
+	whitespace = cr-at-eol
+[pager]
+    diff = diff-so-fancy | less --tabs=4 -RFXS --pattern '^(Date|added|deleted|modified): '
 [alias]
 	# source: https://readhacker.news/c/62mTJ
-	lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all -n 15
+	lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 	
 	# source: http://web.mit.edu/6.031/www/sp21/getting-started/#git-lol
 	lol = log --graph --oneline --decorate --color --all
+
+	# source: https://stackoverflow.com/questions/30542491/push-force-with-lease-by-default
+	pushforce = push --force-if-includes
+	# source: https://jordanelver.co.uk/blog/2020/06/04/fixing-commits-with-git-commit-fixup-and-git-rebase-autosquash/
+	fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+	amend = "!~/.git-amend.sh"
+
+	diffs = diff --staged
 [credential]
 	helper = store
 [pull]
@@ -33,3 +46,26 @@
 	date = iso
 [fetch]
 	prune = true
+[rebase]
+	autosquash = true
+[help]
+	autoCorrect = prompt
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[completion]
+	commands = -am

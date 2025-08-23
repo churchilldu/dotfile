@@ -19,6 +19,9 @@ syntax on
 
 " Disable the default Vim startup message.
 set shortmess+=I
+" Show count of matches 
+" https://stackoverflow.com/questions/4668623/show-count-of-matches-in-vim
+set shortmess-=S
 
 " Show line numbers.
 set number
@@ -66,27 +69,75 @@ set noerrorbells visualbell t_vb=
 " sometimes be convenient.
 set mouse+=a
 
-" Try to prevent bad habits like using the arrow keys for movement. This is
-" not the only possible bad habit. For example, holding down the h/j/k/l keys
-" for movement, rather than using more efficient movement commands, is also a
-" bad habit. The former is enforceable through a .vimrc, while we don't know
-" how to prevent the latter.
-" Do this in normal mode...
-nnoremap <Left>  :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up>    :echoe "Use k"<CR>
-nnoremap <Down>  :echoe "Use j"<CR>
-" ...and in insert mode
-inoremap <Left>  <ESC>:echoe "Use h"<CR>
-inoremap <Right> <ESC>:echoe "Use l"<CR>
-inoremap <Up>    <ESC>:echoe "Use k"<CR>
-inoremap <Down>  <ESC>:echoe "Use j"<CR>
+" show lines above and below cursor (when possible)
+set scrolloff=5 
 
 
-
+" Clipboard
 " https://stackoverflow.com/questions/8757395/can-vim-use-the-system-clipboards-by-default
-set clipboard=unnamedplus
+" linux
+" set clipboard=unnamedplus
+" windows
+set clipboard=unnamed
 
-" Plugins
-Plug 'tpope/vim-surround'
-Plugin 'scrooloose/nerdtree'
+" Don't lose selection when indent
+" https://github.com/mhinz/vim-galore?tab=readme-ov-file#dont-lose-selection-when-shifting-sidewards
+xnoremap <  <gv
+xnoremap >  >gv
+map H ^
+map L $
+nnoremap <C-j> <C-f>
+nnoremap <C-k> <C-b>
+
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+
+set showcmd
+
+" --- Plugins
+
+call plug#begin()
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'unblevable/quick-scope'
+" Plug 'justinmk/vim-sneak'
+Plug 'easymotion/vim-easymotion'
+Plug 'mbbill/undotree'
+Plug('https://github.com/vim-scripts/argtextobj.vim.git')
+
+call plug#end()
+
+" Quick scope pulgin
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+set rtp+=~/.fzf
+
+
+" https://stackoverflow.com/questions/6488683/how-to-change-the-cursor-between-normal-and-insert-modes-in-vim
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
+" Persistent undo
+" https://github.com/mbbill/undotree
+if has("persistent_undo")
+   let target_path = expand('~/.undodir')
+
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call mkdir(target_path, "p", 0700)
+    endif
+
+    let &undodir=target_path
+    set undofile
+endif

@@ -1,0 +1,73 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" Source your .vimrc
+source ~/.vimrc
+
+let mapleader = " "
+
+"" -- Suggested options --
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+
+set ideajoin
+"" Map <leader>r to the Refactor element
+nnoremap <leader>r :action RenameElement<CR>
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
+map <leader>e :action EvaluateExpression<CR>
+
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map <leader>b to toggle the breakpoint on the current line
+"map <leader>b <Action>(ToggleLineBreakpoint)
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Commentary plugin
+set quickscope
+set highlightedyank
+
+Plug 'tpope/vim-commentary'
+
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+set easymotion
+set surround
+set ReplaceWithRegister
+set matchit
+set peekaboo
+set functiontextobj
+
+Plug 'preservim/nerdtree'
+map <c-n> :NERDTree<CR>
+":NERDTreeFocus
+map <leader>n :NERDTreeFocus
+":NERDTreeToggle
+map <c-n>n :NERDTreeClose<CR>
+":NERDTreeFind
+":NERDTreeRefreshRoot
+
+" Easy-motion plugin
+set easymotion
+" let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-bd-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+nnoremap ,java :-1read $HOME/.vim/.skeleton.java<CR>
+let g:argtextobj_pairs="(:),{:},<:>"
