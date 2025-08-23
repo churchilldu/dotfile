@@ -11,6 +11,7 @@ fi
 
 cd $BASEDIR
 ln -s ${PWD}/bashrc ~/.bashrc
+ln -s ${PWD}/inputrc ~/.inputrc
 ln -s ${PWD}/gitconfig ~/.gitconfig
 ln -s ${PWD}/vimrc ~/.vimrc
 ln -s ${PWD}/ideavimrc ~/.ideavimrc
@@ -21,6 +22,7 @@ RIMEDIR=Rime
 RIMEDATAFOLDER="$APPDATA/Rime"
 cd $BASEDIR/$RIMEDIR
 ln -s "${PWD}/default.custom.yaml" "$RIMEDATAFOLDER/default.custom.yaml"
+ln -s "${PWD}/weasel.custom.yaml" "$RIMEDATAFOLDER/weasel.custom.yaml"
 ln -s "${PWD}/rime_ice.custom.yaml" "$RIMEDATAFOLDER/rime_ice.custom.yaml"
 ln -s "${PWD}/custom_phrase.txt" "$RIMEDATAFOLDER/custom_phrase.txt"
 
