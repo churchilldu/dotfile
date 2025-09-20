@@ -152,3 +152,6 @@ source "$OSH"/oh-my-bash.sh
 # Example aliases
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
+export PATH="/c/Users/jesse/scoop/shims:$PATH"
+export PATH="/c/Users/jesse/scoop/apps/maven/current/bin:$PATH"
+eval "$(zoxide init bash)"

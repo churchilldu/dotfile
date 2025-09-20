@@ -1,3 +1,5 @@
+source ~/.vim/plugins.vim
+
 " source: https://missing.csail.mit.edu/2020/editors/
 
 
@@ -99,27 +101,6 @@ set expandtab
 
 set showcmd
 
-" --- Plugins
-
-call plug#begin()
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'unblevable/quick-scope'
-" Plug 'justinmk/vim-sneak'
-Plug 'easymotion/vim-easymotion'
-Plug 'mbbill/undotree'
-Plug('https://github.com/vim-scripts/argtextobj.vim.git')
-
-call plug#end()
-
-" Quick scope pulgin
-" Trigger a highlight in the appropriate direction when pressing these keys:
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-set rtp+=~/.fzf
-
-
 " https://stackoverflow.com/questions/6488683/how-to-change-the-cursor-between-normal-and-insert-modes-in-vim
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
@@ -127,17 +108,4 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 set ttimeout
 set ttimeoutlen=1
 set ttyfast
-" Persistent undo
-" https://github.com/mbbill/undotree
-if has("persistent_undo")
-   let target_path = expand('~/.undodir')
 
-    " create the directory and any parent directories
-    " if the location does not exist.
-    if !isdirectory(target_path)
-        call mkdir(target_path, "p", 0700)
-    endif
-
-    let &undodir=target_path
-    set undofile
-endif
