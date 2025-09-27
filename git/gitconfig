@@ -10,7 +10,7 @@
 	commitEncoding = utf-8 
 	logoutputencoding = utf-8 
 [core] 
-	autocrlf = true
+	autocrlf = input
 	pager = diff-so-fancy | less --tabs=4 -RF
 	whitespace = cr-at-eol
 [pager]
