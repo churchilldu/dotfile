@@ -92,6 +92,7 @@ nnoremap <C-j> <C-f>
 nnoremap <C-k> <C-b>
 
 filetype plugin indent on
+
 " show existing tab with 4 spaces width
 set tabstop=4
 " when indenting with '>', use 4 spaces width
@@ -101,11 +102,23 @@ set expandtab
 
 set showcmd
 
+" Cursor shape depend on mode
 " https://stackoverflow.com/questions/6488683/how-to-change-the-cursor-between-normal-and-insert-modes-in-vim
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-set ttimeout
-set ttimeoutlen=1
-set ttyfast
+"  1 -> blinking block
+"  2 -> solid block 
+"  3 -> blinking underscore
+"  4 -> solid underscore
+"  5 -> blinking vertical bar
+"  6 -> solid vertical bar
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[1 q" "SR = REPLACE mode
+let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
 
+" Smarter cursorline
+" https://github.com/mhinz/vim-galore?tab=readme-ov-file#smarter-cursorline
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
+
+
+" Color scheme
+colorscheme apprentice

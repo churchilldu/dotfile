@@ -7,6 +7,7 @@ Plug 'unblevable/quick-scope'
 Plug 'easymotion/vim-easymotion'
 Plug 'mbbill/undotree'
 Plug('https://github.com/vim-scripts/argtextobj.vim.git')
+Plug('https://github.com/romainl/Apprentice')
 
 call plug#end()
 
