@@ -2,14 +2,25 @@
 set -o vi
 
 alias gs='git status'
-alias cd='z'
 alias ll='ls -l'
-alias la='ls --almost-all'
+alias la='ls --almost-all -l'
 
+
+# History
+HISTIGNORE="ls:cd:pwd:exit:clear"    # skip trivial commands
+HISTSIZE=1000                        # lines in memory
+HISTFILESIZE=1000                    # lines on disk
+# ignoreboth = ignorespace (skip cmds starting with space) + ignoredups (skip consecutive dupes)
+# erasedups  = remove older duplicates, keep only the latest entry
+export HISTCONTROL=ignoreboth:erasedups
+# Append history on exit instead of overwriting (preserves history across multiple terminals)
+shopt -s histappend
+
+shopt -s nocaseglob       # case-insensitive globbing
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.oh-my-bashrc ] && source ~/.oh-my-bashrc
 
-eval "$(zoxide init bash)"
+# eval "$(zoxide init bash)"
 
 export PATH="/c/Users/jesse/scoop/shims:$PATH"
 export PATH="/c/Users/jesse/scoop/apps/maven/current/bin:$PATH"

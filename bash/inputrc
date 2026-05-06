@@ -4,3 +4,23 @@ set vi-cmd-mode-string "\1\e[2 q\2"
 set vi-ins-mode-string "\1\e[6 q\2"
 set keymap vi-insert
 "\C-L": clear-screen
+
+
+# Source - https://stackoverflow.com/a/7179810
+# Posted by sth, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-04-25, License - CC BY-SA 3.0
+
+TAB: menu-complete
+
+## arrow up
+"\e[A":history-search-backward
+## arrow down
+"\e[B":history-search-forward
+
+$if mode=vi
+	set keymap vi-command
+	"k": history-search-backward
+	"j": history-search-forward
+	"H": beginning-of-line
+	"L": end-of-line
+$endif
