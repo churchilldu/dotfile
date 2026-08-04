@@ -2,6 +2,7 @@
 set -o vi
 
 alias gs='git status'
+alias gd='git diff'
 alias ll='ls -l'
 alias la='ls --almost-all -l'
 
@@ -18,9 +19,10 @@ shopt -s histappend
 
 shopt -s nocaseglob       # case-insensitive globbing
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.oh-my-bashrc ] && source ~/.oh-my-bashrc
 
 # eval "$(zoxide init bash)"
 
 export PATH="/c/Users/jesse/scoop/shims:$PATH"
 export PATH="/c/Users/jesse/scoop/apps/maven/current/bin:$PATH"
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path bash)"
