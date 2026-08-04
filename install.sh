@@ -21,3 +21,5 @@ link Rime/custom_phrase.txt "${APPDATA}/Rime/custom_phrase.txt"
 link Rime/default.custom.yaml "${APPDATA}/Rime/default.custom.yaml"
 link Rime/rime_ice.custom.yaml "${APPDATA}/Rime/rime_ice.custom.yaml"
 link Rime/weasel.custom.yaml "${APPDATA}/Rime/weasel.custom.yaml"
+
+link lesskey ~/.lesskey
