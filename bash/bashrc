@@ -3,6 +3,7 @@ set -o vi
 
 alias gs='git status'
 alias gd='git diff'
+alias gc='git commit'
 alias ll='ls -l'
 alias la='ls --almost-all -l'
 

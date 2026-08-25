@@ -1,16 +1,21 @@
 # https://github.com/onceupon/Bash-Oneliner/issues/59
+# The N in \e[N q can be:
+#  1 -> blinking block
+#  2 -> solid block 
+#  3 -> blinking underscore
+#  4 -> solid underscore
+#  5 -> blinking vertical bar
+#  6 -> solid vertical bar
 set show-mode-in-prompt on
 set vi-cmd-mode-string "\1\e[2 q\2"
-set vi-ins-mode-string "\1\e[6 q\2"
+set vi-ins-mode-string "\1\e[5 q\2"
 set keymap vi-insert
+# reset cursor after manipulations, like for vi mode above
+# PS0="\e[2 q\2"
+
 "\C-L": clear-screen
 
-
-# Source - https://stackoverflow.com/a/7179810
-# Posted by sth, modified by community. See post 'Timeline' for change history
-# Retrieved 2026-04-25, License - CC BY-SA 3.0
-
-TAB: menu-complete
+set keyseq-timeout 50
 
 ## arrow up
 "\e[A":history-search-backward
