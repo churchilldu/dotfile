@@ -7,6 +7,8 @@ alias gc='git commit'
 alias ll='ls -l'
 alias la='ls --almost-all -l'
 
+bind 'set show-all-if-ambiguous on'   # show completions on first tab
+bind 'set completion-ignore-case on'  # case-insensitive tab completion
 
 # History
 HISTIGNORE="ls:cd:pwd:exit:clear"    # skip trivial commands
@@ -19,11 +21,12 @@ export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 
 shopt -s nocaseglob       # case-insensitive globbing
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# eval "$(zoxide init bash)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export PATH="/c/Users/jesse/scoop/shims:$PATH"
 export PATH="/c/Users/jesse/scoop/apps/maven/current/bin:$PATH"
 
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path bash)"
+# --- prompt: (branch)dir, sorin-style arrows (see bash/prompt.sh) ---
+[ -f ~/.prompt.sh ] && source ~/.prompt.sh

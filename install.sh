@@ -11,6 +11,7 @@ link() {
 # bash
 link bash/bashrc ~/.bashrc
 link bash/inputrc ~/.inputrc
+link bash/prompt.sh ~/.prompt.sh
 link lesskey ~/.lesskey
 
 # git
