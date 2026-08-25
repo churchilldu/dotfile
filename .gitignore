@@ -1,2 +1,6 @@
 # vim swap files
 *.swp
+
+# generated at install time by install.sh (version-matched to installed tools)
+bash/completions/rg.bash
+bash/completions/fd.bash
