@@ -1,14 +1,9 @@
 #!/usr/bin/env bash
 
-# Windows (Git Bash/MSYS) needs this for symlinks
-[[ "$(uname -s)" == *MINGW* ]] && export MSYS=winsymlinks:nativestrict
-
 DIR=$(cd "$(dirname "$0")" && pwd)
-link() { 
-    # -n (--no-dereference): if the destination is already a symlink to a
-    # directory, replace the symlink itself instead of nesting inside it
-    ln --symbolic --force --no-dereference --verbose "$DIR/$1" "$2" 
-}
+
+# shared symlink helper
+source "$DIR/link.sh"
 
 # bash
 link bash/bashrc ~/.bashrc
@@ -30,8 +25,8 @@ link git/gitconfig ~/.gitconfig
 
 # vim
 mkdir -p ~/.vim
-link vim/plugins.vim ~/.vim/plugins.vim
 link vim/vimrc ~/.vimrc
+link vim/plugins.vim ~/.vim/plugins.vim
 link idea/ideavimrc ~/.ideavimrc
 
 # rime
