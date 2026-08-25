@@ -5,7 +5,9 @@
 
 DIR=$(cd "$(dirname "$0")" && pwd)
 link() { 
-    ln --symbolic --force --verbose "$DIR/$1" "$2" 
+    # -n (--no-dereference): if the destination is already a symlink to a
+    # directory, replace the symlink itself instead of nesting inside it
+    ln --symbolic --force --no-dereference --verbose "$DIR/$1" "$2" 
 }
 
 # bash
@@ -13,6 +15,12 @@ link bash/bashrc ~/.bashrc
 link bash/inputrc ~/.inputrc
 link bash/prompt.sh ~/.prompt.sh
 link bash/completions ~/.bash_completion.d
+
+# generate tool completions at install time so they always match the
+# installed version (the generated .bash files are gitignored).
+command -v rg >/dev/null 2>&1 && rg --generate complete-bash > "${HOME}/.bash_completion.d/rg.bash"
+command -v fd  >/dev/null 2>&1 && fd --gen-completions bash > "${HOME}/.bash_completion.d/fd.bash"
+
 link lesskey ~/.lesskey
 
 # git
