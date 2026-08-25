@@ -6,6 +6,7 @@ alias gd='git diff'
 alias gc='git commit'
 alias ll='ls -l'
 alias la='ls --almost-all -l'
+export LESS='--RAW-CONTROL-CHARS --quit-if-one-screen --no-init --chop-long-lines --tabs=4'   # less defaults
 
 bind 'set show-all-if-ambiguous on'   # show completions on first tab
 bind 'set completion-ignore-case on'  # case-insensitive tab completion
