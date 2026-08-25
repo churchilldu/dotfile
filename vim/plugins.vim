@@ -9,7 +9,7 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'unblevable/quick-scope'
-" Plug 'justinmk/vim-sneak'
+Plug 'justinmk/vim-sneak'
 Plug 'easymotion/vim-easymotion'
 Plug 'mbbill/undotree'
 Plug('https://github.com/vim-scripts/argtextobj.vim.git')
@@ -38,3 +38,5 @@ if has("persistent_undo")
     set undofile
 endif
 
+" Sneak
+let g:sneak#label = 1
