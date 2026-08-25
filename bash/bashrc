@@ -30,3 +30,9 @@ export PATH="/c/Users/jesse/scoop/apps/maven/current/bin:$PATH"
 
 # --- prompt: (branch)dir, sorin-style arrows (see bash/prompt.sh) ---
 [ -f ~/.prompt.sh ] && source ~/.prompt.sh
+
+# --- bash-completion scripts: one file per tool, eager load ---
+for _comp in ~/.bash_completion.d/*; do
+    [ -f "$_comp" ] && source "$_comp"
+done
+unset _comp
