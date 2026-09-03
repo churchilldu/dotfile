@@ -38,3 +38,5 @@ link Rime/weasel.custom.yaml "${APPDATA}/Rime/weasel.custom.yaml"
 
 # tmux
 link tmux.conf ~/.tmux.conf
+link psmux.conf ~/.psmux.conf
+
