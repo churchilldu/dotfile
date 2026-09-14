@@ -1,3 +1,5 @@
+set editing-mode vi
+
 # https://github.com/onceupon/Bash-Oneliner/issues/59
 # The N in \e[N q can be:
 #  1 -> blinking block
@@ -9,23 +11,23 @@
 set show-mode-in-prompt on
 set vi-cmd-mode-string "\1\e[2 q\2"
 set vi-ins-mode-string "\1\e[5 q\2"
-set keymap vi-insert
 # reset cursor after manipulations, like for vi mode above
 # PS0="\e[2 q\2"
 
-"\C-L": clear-screen
-
 set keyseq-timeout 50
 
-## arrow up
-"\e[A":history-search-backward
-## arrow down
-"\e[B":history-search-forward
+set keymap vi-insert
+TAB: menu-complete
+"\C-L": clear-screen
 
-$if mode=vi
-	set keymap vi-command
-	"k": history-search-backward
-	"j": history-search-forward
-	"H": beginning-of-line
-	"L": end-of-line
-$endif
+
+set keymap vi-command
+"k": history-search-backward
+"j": history-search-forward
+"H": beginning-of-line
+"L": end-of-line
+
+set show-all-if-ambiguous on
+set colored-stats on
+set menu-complete-display-prefix on
+set colored-completion-prefix on
