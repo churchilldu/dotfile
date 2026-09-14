@@ -7,7 +7,6 @@
   ```bash
   rg --ignore-case pattern          # preferred over `rg -i`
   ```
-- Do not head or tail command output.
 
 ## Code
 
