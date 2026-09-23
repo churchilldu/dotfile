@@ -27,6 +27,7 @@ link git/gitconfig ~/.gitconfig
 mkdir -p ~/.vim
 link vim/vimrc ~/.vimrc
 link vim/plugins.vim ~/.vim/plugins.vim
+link vim/plugin ~/.vim/plugin.d
 link idea/ideavimrc ~/.ideavimrc
 
 # rime
