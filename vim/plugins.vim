@@ -1,43 +1,15 @@
+" Bootstrap and loader for ~/.vim/plugin/*.vim fragments.
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" All Plug declarations must run between plug#begin() and plug#end(), so each
+" fragment (which adds Plug + that plugin's config) is sourced inside here.
 call plug#begin()
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'unblevable/quick-scope'
-Plug 'justinmk/vim-sneak'
-Plug 'easymotion/vim-easymotion'
-Plug 'mbbill/undotree'
-Plug('https://github.com/vim-scripts/argtextobj.vim.git')
-Plug('https://github.com/romainl/Apprentice')
-Plug 'christoomey/vim-tmux-navigator'
-
+for s:plug_file in sort(glob('~/.vim/plugin.d/*.vim', v:true, v:true))
+  execute 'source' s:plug_file
+endfor
+unlet s:plug_file
 call plug#end()
-
-" Quick scope pulgin
-" Trigger a highlight in the appropriate direction when pressing these keys:
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-set rtp+=~/.fzf
-
-" Persistent undo
-" https://github.com/mbbill/undotree
-if has("persistent_undo")
-   let target_path = expand('~/.undodir')
-
-    " create the directory and any parent directories
-    " if the location does not exist.
-    if !isdirectory(target_path)
-        call mkdir(target_path, "p", 0700)
-    endif
-
-    let &undodir=target_path
-    set undofile
-endif
-
-" Sneak
-let g:sneak#label = 1
