@@ -12,3 +12,7 @@
 
 - Write self-documenting code: name things so intent is readable without a comment.
 - Do not write comments that restate what the code already says.
+
+## Opinion requests
+
+- When I ask you about your opinion or thought, it means: discuss, don't implement.
