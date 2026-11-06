@@ -18,6 +18,15 @@ command -v fd  >/dev/null 2>&1 && fd --gen-completions bash > "${HOME}/.bash_com
 
 link lesskey ~/.lesskey
 
+# diff-so-fancy: the pager gitconfig refers to, shipped as a single script
+# (a fatpacked perl script, so perl has to be on PATH)
+if ! command -v diff-so-fancy >/dev/null 2>&1; then
+    mkdir -p ~/.local/bin
+    curl --fail --silent --show-error --location --output ~/.local/bin/diff-so-fancy \
+        "https://github.com/so-fancy/diff-so-fancy/releases/download/v1.4.4/diff-so-fancy"
+    chmod +x ~/.local/bin/diff-so-fancy
+fi
+
 # git
 link git/git-amend.sh ~/.git-amend.sh
 link git/gitattributes ~/.gitattributes
@@ -41,3 +50,8 @@ link Rime/weasel.custom.yaml "${APPDATA}/Rime/weasel.custom.yaml"
 link tmux.conf ~/.tmux.conf
 link psmux.conf ~/.psmux.conf
 
+# tmux plugins: tpm, then whatever tmux.conf lists under @plugin
+# (the script starts a tmux server if needed so the plugin list is loaded)
+tpm_dir=~/.tmux/plugins/tpm
+[[ -d "$tpm_dir" ]] || git clone --depth 1 https://github.com/tmux-plugins/tpm "$tpm_dir"
+"$tpm_dir/bin/install_plugins" >/dev/null
