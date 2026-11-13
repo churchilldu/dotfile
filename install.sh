@@ -8,6 +8,7 @@ source "$DIR/link.sh"
 # bash
 link bash/bashrc ~/.bashrc
 link bash/inputrc ~/.inputrc
+link bash/alias ~/.alias
 link bash/prompt.sh ~/.prompt.sh
 link bash/completions ~/.bash_completion.d
 
