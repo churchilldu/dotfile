@@ -11,21 +11,11 @@ link bash/inputrc ~/.inputrc
 link bash/prompt.sh ~/.prompt.sh
 link bash/completions ~/.bash_completion.d
 
-# generate tool completions at install time so they always match the
-# installed version (the generated .bash files are gitignored).
-command -v rg >/dev/null 2>&1 && rg --generate complete-bash > "${HOME}/.bash_completion.d/rg.bash"
-command -v fd  >/dev/null 2>&1 && fd --gen-completions bash > "${HOME}/.bash_completion.d/fd.bash"
-
 link lesskey ~/.lesskey
 
-# diff-so-fancy: the pager gitconfig refers to, shipped as a single script
-# (a fatpacked perl script, so perl has to be on PATH)
-if ! command -v diff-so-fancy >/dev/null 2>&1; then
-    mkdir -p ~/.local/bin
-    curl --fail --silent --show-error --location --output ~/.local/bin/diff-so-fancy \
-        "https://github.com/so-fancy/diff-so-fancy/releases/download/v1.4.4/diff-so-fancy"
-    chmod +x ~/.local/bin/diff-so-fancy
-fi
+command -v rg &>/dev/null && rg --generate complete-bash > "~/.bash_completion.d/rg.bash"
+command -v fd &>/dev/null && fd --gen-completions bash > "~/.bash_completion.d/fd.bash"
+
 
 # git
 link git/git-amend.sh ~/.git-amend.sh
@@ -37,21 +27,20 @@ mkdir -p ~/.vim
 link vim/vimrc ~/.vimrc
 link vim/plugins.vim ~/.vim/plugins.vim
 link vim/plugin ~/.vim/plugin.d
-link idea/ideavimrc ~/.ideavimrc
+## ideavim
+command -v idea idea64 &>/dev/null && link idea/ideavimrc ~/.ideavimrc
 
-# rime
-mkdir -p "${APPDATA}/Rime"
-link Rime/custom_phrase.txt "${APPDATA}/Rime/custom_phrase.txt"
-link Rime/default.custom.yaml "${APPDATA}/Rime/default.custom.yaml"
-link Rime/rime_ice.custom.yaml "${APPDATA}/Rime/rime_ice.custom.yaml"
-link Rime/weasel.custom.yaml "${APPDATA}/Rime/weasel.custom.yaml"
+# rime 
+if [[ "$(uname --kernel-name)" == *MINGW* || "$(uname --kernel-name)" == *MSYS* || "$(uname --kernel-name)" == *CYGWIN* ]]; then
+    mkdir -p "${APPDATA}/Rime"
+    link Rime/custom_phrase.txt "${APPDATA}/Rime/custom_phrase.txt"
+    link Rime/default.custom.yaml "${APPDATA}/Rime/default.custom.yaml"
+    link Rime/rime_ice.custom.yaml "${APPDATA}/Rime/rime_ice.custom.yaml"
+    link Rime/weasel.custom.yaml "${APPDATA}/Rime/weasel.custom.yaml"
+fi
 
 # tmux
 link tmux.conf ~/.tmux.conf
-link psmux.conf ~/.psmux.conf
+## psmux
+command -v psmux && link psmux.conf ~/.psmux.conf
 
-# tmux plugins: tpm, then whatever tmux.conf lists under @plugin
-# (the script starts a tmux server if needed so the plugin list is loaded)
-tpm_dir=~/.tmux/plugins/tpm
-[[ -d "$tpm_dir" ]] || git clone --depth 1 https://github.com/tmux-plugins/tpm "$tpm_dir"
-"$tpm_dir/bin/install_plugins" >/dev/null
