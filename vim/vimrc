@@ -27,13 +27,6 @@ set shortmess-=S
 
 " Show line numbers.
 set number
-
-" This enables relative line numbering mode. With both number and
-" relativenumber enabled, the current line shows the true line number, while
-" all other lines (above and below) are numbered relative to the current line.
-" This is useful because you can tell, at a glance, what count is needed to
-" jump up or down to a particular line, by {count}k to go up or {count}j to go
-" down.
 set relativenumber
 
 " Always show the status line at the bottom, even if you only have one window open.
@@ -74,24 +67,26 @@ set mouse+=a
 " show lines above and below cursor (when possible)
 set scrolloff=5 
 
+" Leader key is set to Space
+let mapleader=" "
 
-" Clipboard
-" https://stackoverflow.com/questions/8757395/can-vim-use-the-system-clipboards-by-default
-" linux
-" set clipboard=unnamedplus
-" windows
-set clipboard=unnamed
+" Copy to / paste from the system clipboard
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
 
 " Don't lose selection when indent
 " https://github.com/mhinz/vim-galore?tab=readme-ov-file#dont-lose-selection-when-shifting-sidewards
 xnoremap <  <gv
 xnoremap >  >gv
-map H ^
-map L $
-nnoremap <C-j> <C-f>
-nnoremap <C-k> <C-b>
 
+nnoremap H ^
+nnoremap L $
+
+ " load indentation rules and plugins according to the detected filetype.
 filetype plugin indent on
+
+set showmatch          " Show matching brackets.
+
 
 " show existing tab with 4 spaces width
 set tabstop=4
