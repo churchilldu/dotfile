@@ -14,8 +14,8 @@ link bash/completions ~/.bash_completion.d
 
 link lesskey ~/.lesskey
 
-command -v rg &>/dev/null && rg --generate complete-bash > "~/.bash_completion.d/rg.bash"
-command -v fd &>/dev/null && fd --gen-completions bash > "~/.bash_completion.d/fd.bash"
+command -v rg &>/dev/null && rg --generate complete-bash > "$HOME/.bash_completion.d/rg.bash"
+command -v fd &>/dev/null && fd --gen-completions bash > "$HOME/.bash_completion.d/fd.bash"
 
 
 # git
