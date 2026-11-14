@@ -13,8 +13,15 @@ if [[ -z "$DIR" ]]; then
     DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 fi
 
+# --no-dereference / -h: if the destination is already a symlink to a
+# directory, replace the symlink itself instead of nesting inside it.
+# BSD ln has no long options, so pick the flag set once from the tool itself.
+if ln --help 2>/dev/null | grep -q -- --no-dereference; then
+    LN_FLAGS=(--symbolic --force --no-dereference --verbose)
+else
+    LN_FLAGS=(-s -f -h -v)
+fi
+
 link() {
-    # -n (--no-dereference): if the destination is already a symlink to a
-    # directory, replace the symlink itself instead of nesting inside it
-    ln --symbolic --force --no-dereference --verbose "$DIR/$1" "$2"
+    ln "${LN_FLAGS[@]}" "$DIR/$1" "$2"
 }
