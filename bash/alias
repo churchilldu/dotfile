@@ -4,7 +4,7 @@ alias v='vi'
 
 # ls
 alias ll='ls --human-readable -l'
-alias la='ll --almost-all'   # does not list . and ..
+alias la='ls --almost-all'   # does not list . and ..
 alias lla='la -l'
 
 # git
