@@ -31,6 +31,8 @@
 	helper = store
 [pull]
 	ff = only
+[push]
+	useForceIfIncludes = true
 [diff]
 	tool = difftastic
 	algorithm = histogram
