@@ -34,3 +34,7 @@ for _comp in ~/.bash_completion.d/*; do
     [ -f "$_comp" ] && source "$_comp"
 done
 unset _comp
+
+if [[ ${TERM_PROGRAM-} == ghostty && -n ${GHOSTTY_RESOURCES_DIR-} ]]; then
+  source "$GHOSTTY_RESOURCES_DIR/shell-integration/bash/ghostty.bash"
+fi
