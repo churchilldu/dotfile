@@ -2,7 +2,7 @@
 set -o vi
 
 # --- aliases ---
-[ -f ~/.alias ] && source ~/.alias
+[ -f ~/.alias.sh ] && source ~/.alias.sh
 
 export EDITOR=vim
 export VISUAL=vim
