@@ -38,6 +38,7 @@
 	sort = -committerdate
 [merge]
 	conflictstyle = zdiff3
+	tool = vimdiff
 [commit]
 	verbose = true
 [log]
