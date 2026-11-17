@@ -34,7 +34,6 @@ command -v idea idea64 &>/dev/null && link idea/ideavimrc ~/.ideavimrc
 # rime 
 if [[ "$(uname --kernel-name)" == *MINGW* || "$(uname --kernel-name)" == *MSYS* || "$(uname --kernel-name)" == *CYGWIN* ]]; then
     mkdir -p "${APPDATA}/Rime"
-    link Rime/custom_phrase.txt "${APPDATA}/Rime/custom_phrase.txt"
     link Rime/default.custom.yaml "${APPDATA}/Rime/default.custom.yaml"
     link Rime/rime_ice.custom.yaml "${APPDATA}/Rime/rime_ice.custom.yaml"
     link Rime/weasel.custom.yaml "${APPDATA}/Rime/weasel.custom.yaml"
